@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h2 {
+            text-shadow: 2px 2px rgb(70, 0, 128);
+            margin-left: 40%;
+            font-size: 4em;
+            font-family: monospace;
+            margin-top: 15%;
+        }
+        
+        p {
+            text-align: center;
+            font-size: 1.5em;
+            font-family: serif;
+        }
+        
+        a {
+            font-size: 1.5em;
+            color: white;
+            vertical-align: super;
+        }
+        
+        #contact {
+            width: 26%;
+            background-color: green;
+            border: 2px double rgb(179, 255, 0);
+            border-radius: 25px;
+            margin-left: 33%;
+            text-align: center;
+        }
+        
+        #timeleft {
+            width: 30%;
+            margin-left: 30%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2 id="txt"> js text</h2>
+
+
+    <div id="timeleft">
+
+        <p>Time left for <span>HOUARI</span>'s birthday:<b id="str"> jstext</b></p>
+    </div>
+
+    <br>
+    <div id="contact">
+        <input type="image" src="https://icons.iconarchive.com/icons/social-media-icons/glossy-social/32/Whatsapp-icon.png">
+        <a href="http://wa.me/212649750119?text=Happy Birthday Youness(:">Send me a message!</a>
+    </div>
+    <script>
+        //var bcolor = ["orange", "black", "blue", "green", "white", "#987554"];
+
+        //document.body.style.background = bcolor[Math.floor(Math.random() * bcolor.length)];
+
+        var now = new Date();
+
+        var day = now.getDate(); /* 1-31 */
+        var month = now.getMonth(); /* 0-11*/
+        var year = now.getFullYear();
+
+        var birthday = new Date("04/29/" + year);
+
+        var diff_days = Math.floor((birthday.getTime() - now.getTime()) / (1000 * 24 * 3600));
+        var rest = (birthday.getTime() - now.getTime()) % (1000 * 24 * 3600);
+        var diff_hours = Math.floor(rest / (1000 * 3600));
+        var rest2 = rest % (1000 * 3600);
+        var diff_minutes = Math.floor(rest2 / (1000 * 60));
+        var rest3 = rest2 % (1000 * 60);
+        var diff_seconds = Math.round(rest3 / 1000);
+
+
+        var d = diff_days + "day";
+        (diff_days == 1) ? d = d: d += "s";
+        (diff_days == 0) ? d = "": d = d;
+
+        var h = diff_hours + "hour";
+        (diff_hours == 1) ? h = h: h += "s";
+        (diff_hours == 0) ? h = "": h = h;
+
+        var m = diff_minutes + "minute";
+        (diff_minutes == 1) ? m = m: m += "s";
+        (diff_minutes == 0) ? m = "": m = m;
+
+        var s = diff_seconds + "second"; // non sense code just to blink the eyes
+        (diff_seconds == 1) ? s = s: s += "s";
+        (diff_seconds == 0) ? s = "": s = s;
+
+        var txt = document.getElementById("txt");
+        var str = document.getElementById("str");
+
+
+
+        if (day == 3 && month == 1) {
+            txt.innerHTML = "YES &#129395;";
+            txt.style.color = "green";
+
+        } else {
+            txt.innerHTML = "NO &#128532;";
+            txt.style.color = "red";
+            str.innerHTML = d + " " + h + " " + m + " " + s;
+
+
+        }
+
+
+
+        // setInterval(HappyBirthday, 1000);
+    </script>
+</body>
+
+</html>
