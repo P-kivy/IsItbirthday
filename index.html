@@ -4,19 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--JS-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>IsItBirthday?</title>
+
+    <script>
+        $(document).ready(
+            function() {
+
+                $("#contact").fadeIn(1000);
+
+            }
+        );
+    </script>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
         #answer {
             text-shadow: 2px 2px rgb(70, 0, 128);
-            margin-left: 40%;
+            text-align: center;
             font-size: 4em;
             font-family: monospace;
-            margin-top: 15%;
         }
         
         a {
@@ -25,153 +36,118 @@
             font-size: 1.5em;
         }
         
+        a:hover {
+            color: red;
+        }
+        
         p {
             text-align: center;
             font-size: 1.5em;
             font-family: serif;
+            margin-top: 5%;
         }
         
         #contact {
-            width: 26%;
+            width: 90%;
+            margin-left: 5%;
             background-color: green;
             border: 2px double rgb(179, 255, 0);
             border-radius: 25px;
-            margin-left: 33%;
             text-align: center;
+            display: none;
+            margin-top: 5%;
         }
         
         #timeleft {
-            width: 30%;
-            margin-left: 30%;
+            width: 100%;
+            margin-top: 5%;
         }
         
-        @media (max-width: 600px) {
-            #answer {
-                float: left;
-                font-size: 40px;
-                height: 60px;
-            }
-            #timeleft {
-                float: left;
-                clear: both;
-                width: 100%;
-                margin-top: 40%;
-                margin-left: 0;
-                margin-bottom: 5%;
-                height: 200px;
-                font-size: medium;
-            }
-            #contact {
-                width: 80%;
-                height: auto;
-                overflow-y: scroll;
-                margin: 90% 0 0 10%;
-            }
-        }
-        
-        @media (max-width: 300px) {
-            #answer {
-                float: left;
-                width: 100%;
-                margin: 5% 0 10% 0;
-                text-align: center;
-                clear: both;
-                font-size: 40px;
-                height: 60px;
-            }
-            #timeleft {
-                float: left;
-                clear: both;
-                width: 100%;
-                margin-top: 40%;
-                margin-left: 0;
-                margin-bottom: 5%;
-                height: 200px;
-                font-size: medium;
-            }
-            #contact {
-                width: 100%;
-                height: auto;
-                overflow-y: scroll;
-                margin: 90% 0 0 0%;
-            }
+        .container {
+            margin-top: 20%;
         }
     </style>
 
 </head>
 
 <body>
-    <div id="answer">
-        <h2 id="txt"> js text</h2>
+
+    <div class="container">
+
+        <div id="answer">
+            <h2 id="txt"> js text</h2>
+        </div>
+
+        <div id="timeleft">
+            <p>Time left for <kbd>HOUARI</kbd>'s birthday:<b id="str"> jstext</b></p>
+        </div>
+
+        <div id="contact">
+            <input type="image" src="https://icons.iconarchive.com/icons/social-media-icons/glossy-social/32/Whatsapp-icon.png">
+            <a href="http://wa.me/212649750119?text=Happy Birthday Youness(:">Send me a message!</a>
+        </div>
+
     </div>
 
-    <div id="timeleft">
-        <p>Time left for <span>HOUARI</span>'s birthday:<b id="str"> jstext</b></p>
-    </div>
-
-    <br>
-    <div id="contact">
-        <input type="image" src="https://icons.iconarchive.com/icons/social-media-icons/glossy-social/32/Whatsapp-icon.png">
-        <a href="http://wa.me/212649750119?text=Happy Birthday Youness(:">Send me a message!</a>
-    </div>
     <script>
-        //var bcolor = ["orange", "black", "blue", "green", "white", "#987554"];
+        function display() {
+            var bcolor = ["white", "cyan"];
 
-        //document.body.style.background = bcolor[Math.floor(Math.random() * bcolor.length)];
+            document.body.style.background = bcolor[Math.floor(Math.random() * bcolor.length)];
 
-        var now = new Date();
+            var now = new Date();
 
-        var day = now.getDate(); /* 1-31 */
-        var month = now.getMonth(); /* 0-11*/
-        var year = now.getFullYear();
+            var day = now.getDate(); /* 1-31 */
+            var month = now.getMonth(); /* 0-11*/
+            var year = now.getFullYear();
 
-        var birthday = new Date("04/29/" + year);
+            var birthday = new Date("04/29/" + year);
 
-        var diff_days = Math.floor((birthday.getTime() - now.getTime()) / (1000 * 24 * 3600));
-        var rest = (birthday.getTime() - now.getTime()) % (1000 * 24 * 3600);
-        var diff_hours = Math.floor(rest / (1000 * 3600));
-        var rest2 = rest % (1000 * 3600);
-        var diff_minutes = Math.floor(rest2 / (1000 * 60));
-        var rest3 = rest2 % (1000 * 60);
-        var diff_seconds = Math.round(rest3 / 1000);
-
-
-        var d = diff_days + "day";
-        (diff_days == 1) ? d = d: d += "s";
-        (diff_days == 0) ? d = "": d = d;
-
-        var h = diff_hours + "hour";
-        (diff_hours == 1) ? h = h: h += "s";
-        (diff_hours == 0) ? h = "": h = h;
-
-        var m = diff_minutes + "minute";
-        (diff_minutes == 1) ? m = m: m += "s";
-        (diff_minutes == 0) ? m = "": m = m;
-
-        var s = diff_seconds + "second"; // non sense code just to blink the eyes
-        (diff_seconds == 1) ? s = s: s += "s";
-        (diff_seconds == 0) ? s = "": s = s;
-
-        var txt = document.getElementById("txt");
-        var str = document.getElementById("str");
+            var diff_days = Math.floor((birthday.getTime() - now.getTime()) / (1000 * 24 * 3600));
+            var rest = (birthday.getTime() - now.getTime()) % (1000 * 24 * 3600);
+            var diff_hours = Math.floor(rest / (1000 * 3600));
+            var rest2 = rest % (1000 * 3600);
+            var diff_minutes = Math.floor(rest2 / (1000 * 60));
+            var rest3 = rest2 % (1000 * 60);
+            var diff_seconds = Math.floor(rest3 / 1000);
 
 
+            var d = diff_days + "day";
+            (diff_days == 1) ? d = d: d += "s";
+            (diff_days == 0) ? d = "": d = d;
 
-        if (day == 3 && month == 1) {
-            txt.innerHTML = "YES&#129395;";
-            txt.style.color = "green";
+            var h = diff_hours + "hour";
+            (diff_hours == 1) ? h = h: h += "s";
+            (diff_hours == 0) ? h = "": h = h;
 
-        } else {
-            txt.innerHTML = "NO&#128532;";
-            txt.style.color = "red";
-            str.innerHTML = d + " " + h + " " + m + " " + s;
+            var m = diff_minutes + "minute";
+            (diff_minutes == 1) ? m = m: m += "s";
+            (diff_minutes == 0) ? m = "": m = m;
 
+            var s = diff_seconds + "second"; // non sense code just to blink the eyes
+            (diff_seconds == 1) ? s = s: s += "s";
+            (diff_seconds == 0) ? s = "": s = s;
+
+            var txt = document.getElementById("txt");
+            var str = document.getElementById("str");
+
+
+
+            if (day == 3 && month == 1) {
+                txt.innerHTML = "YES&#129395;";
+                txt.style.color = "green";
+
+            } else {
+                txt.innerHTML = "NO&#128532;";
+                txt.style.color = "red";
+                str.innerHTML = d + " " + h + " " + m + " " + s;
+            }
+
+            setInterval(display, 1000);
 
         }
 
-
-
-        // setInterval(HappyBirthday, 1000);
+        display();
     </script>
 </body>
 
