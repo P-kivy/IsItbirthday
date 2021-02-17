@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!--JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--JS-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
     <title>IsItBirthday?</title>
 
@@ -16,7 +18,16 @@
         $(document).ready(
             function() {
 
-                $("#contact").fadeIn(1000);
+                $("#contact").fadeIn(4000);
+
+
+                $(".container").css({
+                    'marginTop': $(window).height() / 2 - $(".container").height() / 2 + 'px'
+                });
+
+                $("body").css({
+                    'backgroundSize': "100%" + $(window).height() * 0.7 + '%'
+                });
 
             }
         );
@@ -24,10 +35,17 @@
 
     <style>
         #answer {
-            text-shadow: 2px 2px rgb(70, 0, 128);
+            text-shadow: 2px 2px rgb(0, 23, 128);
             text-align: center;
             font-size: 4em;
             font-family: monospace;
+            margin-top: 20px;
+        }
+        
+        p {
+            font-family: monospace;
+            font-weight: 600;
+            font-size: 15px;
         }
         
         a {
@@ -40,31 +58,20 @@
             color: red;
         }
         
-        p {
-            text-align: center;
-            font-size: 1.5em;
-            font-family: serif;
-            margin-top: 5%;
-        }
-        
         #contact {
             width: 90%;
-            margin-left: 5%;
             background-color: green;
-            border: 2px double rgb(179, 255, 0);
+            border: 2px dotted rgb(179, 255, 0);
             border-radius: 25px;
-            text-align: center;
             display: none;
-            margin-top: 5%;
-        }
-        
-        #timeleft {
-            width: 100%;
-            margin-top: 5%;
         }
         
         .container {
-            margin-top: 20%;
+            background-color: rgba(12, 89, 133, 0.5);
+        }
+        
+        body {
+            background: url("https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_4k_hd-t2.jpg") no-repeat center scroll;
         }
     </style>
 
@@ -75,31 +82,48 @@
     <div class="container">
 
         <div id="answer">
-            <h2 id="txt"> js text</h2>
+            <h1 id="txt" class="justify-content-center d-flex position-absoulute w-100"> js text</h1>
         </div>
 
-        <div id="timeleft">
-            <p>Time left for <kbd>HOUARI</kbd>'s birthday:<b id="str"> jstext</b></p>
+
+
+        <div id="prog" class="progress">
+
+            <div id="percent" class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width:100%;"></div>
+
         </div>
 
-        <div id="contact">
+        <div id="timeleft" class="justify-content-center d-flex position-absoulute w-100">
+            <p style="padding: 3% 0% 3% 0%; white-space: nowrap;">Time left for <kbd>HOUARI's</kbd> birthday:
+                <br>
+                <b style="font-family:cursive; text-shadow: aliceblue 1px 1px; white-space: nowrap;" id="str"> jstext</b></p>
+        </div>
+        <div id="video" class="embed-responsive embed-responsive-16by9">
+
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/HrnkisOYPfA?autoplay=1&mute=1" allowfullscreen></iframe>
+
+        </div>
+
+
+        <div id="contact" class="justify-content-center d-flex position-absoulute w-100">
             <input type="image" src="https://icons.iconarchive.com/icons/social-media-icons/glossy-social/32/Whatsapp-icon.png">
-            <a href="http://wa.me/212649750119?text=Happy Birthday Youness(:">Send me a message!</a>
+            <a style="white-space: nowrap;" href="http://wa.me/212649750119?text=Happy Birthday Youness(:">Send me a message</a>
         </div>
 
     </div>
 
+
+
     <script>
         function display() {
-            var bcolor = ["white", "cyan"];
-
-            document.body.style.background = bcolor[Math.floor(Math.random() * bcolor.length)];
 
             var now = new Date();
 
             var day = now.getDate(); /* 1-31 */
             var month = now.getMonth(); /* 0-11*/
             var year = now.getFullYear();
+            var total;
+            (year % 4) ? total = 366: total = 365;
 
             var birthday = new Date("04/29/" + year);
 
@@ -110,6 +134,7 @@
             var diff_minutes = Math.floor(rest2 / (1000 * 60));
             var rest3 = rest2 % (1000 * 60);
             var diff_seconds = Math.floor(rest3 / 1000);
+
 
 
             var d = diff_days + "day";
@@ -130,24 +155,62 @@
 
             var txt = document.getElementById("txt");
             var str = document.getElementById("str");
+            var video = document.getElementById("video");
+            var prog = document.getElementById("prog");
+            var timeleft = document.getElementById("timeleft");
+            var percent = Math.ceil((diff_days / total) * 100);
+            var el = document.getElementById("percent");
 
 
-
-            if (day == 3 && month == 1) {
+            if (day == 12 && month == 1) {
                 txt.innerHTML = "YES&#129395;";
                 txt.style.color = "green";
+                prog.style.display = "none";
+                timeleft.innerHTML = "";
+                video.style.display = "block";
 
             } else {
                 txt.innerHTML = "NO&#128532;";
                 txt.style.color = "red";
+
+                el.style.width = percent + '%';
                 str.innerHTML = d + " " + h + " " + m + " " + s;
+                video.style.display = "none";
+
             }
+
 
             setInterval(display, 1000);
 
         }
 
+        function skiper() {
+            var bimg = ["https://images.hdqwalls.com/download/rick-and-morty-5k-artwork-hy-2048x1152.jpg",
+                "https://images.hdqwalls.com/download/rick-and-morty-5k-yc-2560x1440.jpg",
+                "https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_solo_4k_hd-t2.jpg",
+                "https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_4k_hd-t2.jpg"
+
+            ];
+
+
+
+            var index = bimg[Math.floor(Math.random() * bimg.length)];
+
+            document.body.style.background = "url('" + index + "')" + " no-repeat center scroll";
+            $("body").css({
+                'backgroundSize': "100%" + $(window).height() * 0.7 + '%'
+            });
+
+
+
+
+
+
+        }
+
+
         display();
+        setInterval(skiper, 4000);
     </script>
 </body>
 
