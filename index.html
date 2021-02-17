@@ -31,6 +31,28 @@
 
             }
         );
+
+        function skiper() {
+            var bimg = ["https://images.hdqwalls.com/download/rick-and-morty-5k-artwork-hy-2048x1152.jpg",
+                "https://images.hdqwalls.com/download/rick-and-morty-5k-yc-2560x1440.jpg",
+                "https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_solo_4k_hd-t2.jpg",
+                "https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_4k_hd-t2.jpg"
+
+            ];
+
+
+
+            var index = bimg[Math.floor(Math.random() * bimg.length)];
+
+            var bg = "url('" + index + "')" + " no-repeat center scroll";
+            $("body").css({
+                'background': bg,
+                'backgroundSize': "100%" + $(window).height() * 0.7 + '%'
+            });
+
+        }
+
+        setInterval(skiper, 4000);
     </script>
 
     <style>
@@ -184,33 +206,10 @@
 
         }
 
-        function skiper() {
-            var bimg = ["https://images.hdqwalls.com/download/rick-and-morty-5k-artwork-hy-2048x1152.jpg",
-                "https://images.hdqwalls.com/download/rick-and-morty-5k-yc-2560x1440.jpg",
-                "https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_solo_4k_hd-t2.jpg",
-                "https://www.hdwallpapers.in/thumbs/2020/rick_and_morty_4k_hd-t2.jpg"
 
-            ];
-
-
-
-            var index = bimg[Math.floor(Math.random() * bimg.length)];
-
-            document.body.style.background = "url('" + index + "')" + " no-repeat center scroll";
-            $("body").css({
-                'backgroundSize': "100%" + $(window).height() * 0.7 + '%'
-            });
-
-
-
-
-
-
-        }
 
 
         display();
-        setInterval(skiper, 4000);
     </script>
 </body>
 
